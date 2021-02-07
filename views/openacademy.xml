@@ -27,6 +27,8 @@
                         <field name="start_date" />
                         <field name="duration" />
                         <field name="seats" />
+                        <field name="taken_seats" widget="progressbar" />
+                            
                                     
                     </group>
                 </sheet>
@@ -40,6 +42,8 @@
                 <tree string="Course Tree">
                     <field name="name"/>
                     <field name="responsible_id"/>
+                    <field name="taken_seats" widget="progressbar" />
+                        
                 </tree>
             </field>
         </record>
