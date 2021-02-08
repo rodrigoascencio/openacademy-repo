@@ -10,6 +10,12 @@
                     <group>
                         <field name="name"/>
                         <field name="description"/>
+                            <filter name="my_courses" string="My Courses"
+                            domain="[('responsible_id', '=', uid)]"/>
+                            <group string="Group By">
+                            <filter name="by_responsible" string="Responsible"
+                                    context="{'group_by': 'responsible_id'}"/>
+                    </group>
                     </group>
                 </sheet>
             </form>
@@ -35,6 +41,30 @@
             </form>
         </field>
     </record>
+
+
+        <record model="ir.ui.view" id="session_calendar_view">
+            <field name="name">session.calendar</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Session Calendar" date_start="start_date" date_stop="end_date" color="instructor_id">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="session_list_action">
+            <field name="name">Sessions</field>
+            <field name="res_model">openacademy.session</field>
+            <field name="view_mode">tree,form,calendar</field>
+                <field name="context" eval="{'search_default_my_courses': 1}" />
+                 <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="session_menu" name="Sessions"/>
         <record model="ir.ui.view" id="course_tree_view">
             <field name="name">course.tree</field>
             <field name="model">openacademy.course</field>
