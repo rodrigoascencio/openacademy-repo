@@ -17,11 +17,11 @@
     </record>
 
     <record id="session_form_view" model="ir.ui.view">
-        <field name="name">session.form</field>
+        <field name="name">session.tree</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-            <form string="Session Form">
-                <sheet>
+            <tree string="Session Tree" decoration_info="duration&lt;5" decoration_danger="duration&gt;15">
+            </tree>
                     <group>
                         <field name="name" />
                         <field name="start_date" />
